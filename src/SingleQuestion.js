@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Paper, Button } from "@material-ui/core";
+import { Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
@@ -7,12 +7,11 @@ import RemoveIcon from "@material-ui/icons/Remove";
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
-  },
-  header: {
-    display: "flex",
-  },
-  grid: {
-    border: "1px solid black",
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.error.dark,
+    "&hover": {
+      backgroundColor: theme.palette.secondary.dark,
+    },
   },
 }));
 
@@ -22,25 +21,31 @@ const SingleQuestion = ({ question }) => {
   console.log(question);
   const [showInfo, setShowInfo] = useState(false);
   return (
-    <div>
-      <div>
-        <Grid className={classes.grid}>
-          <Paper className={classes.paper}>
-            <header className={classes.header}>
-              <h3>{title}</h3>
-              <Button
-                color="secondary"
-                size="small"
-                onClick={() => setShowInfo(!showInfo)}
-              >
-                {showInfo ? <RemoveIcon /> : <AddIcon />}
-              </Button>
-            </header>
-            {showInfo && <p>{info}</p>}
-          </Paper>
+    <Paper variant="outlined" className={classes.paper}>
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+      >
+        <Grid item>
+          <h3>{title}</h3>
         </Grid>
-      </div>
-    </div>
+
+        <Grid item>
+          {showInfo ? (
+            <RemoveIcon
+              color="secondarys"
+              onClick={() => setShowInfo(!showInfo)}
+            />
+          ) : (
+            <AddIcon color="secondary" onClick={() => setShowInfo(!showInfo)} />
+          )}
+        </Grid>
+
+        {showInfo && <p>{info}</p>}
+      </Grid>
+    </Paper>
   );
 };
 
