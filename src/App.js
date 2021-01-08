@@ -19,7 +19,7 @@ function App() {
         <Grid item lg={6}>
           <Paper elevation={3} className={classes.paper}>
             <h3> Question and answer about login</h3>
-            <section>
+            <section className="accordian">
               {ques.map((question) => {
                 return <SingleQuestion key={ques.id} question={question} />;
               })}

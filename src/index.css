@@ -12,3 +12,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.grid {
+  background-color: aqua;
+  color: red;
+}
+.accordian :hover {
+  background-color: yellow;
+  transition: 0.4s;
+  font-size: 1.5rem;
+  /* transform: translateX(3px); */
+}
